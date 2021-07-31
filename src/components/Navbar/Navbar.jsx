@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Cart from '../Cart/Cart'
 
 const Navbar = () => {
@@ -7,11 +8,11 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg">
       <div className="row px-3 mx-0">          
         <div className="col px-0">
-          <h1 className="navbar-marca dlv-logo px-0">
+        <NavLink to="/" className="navbar-marca dlv-logo px-0">
             <span className="">
               <strong>e-Shop</strong>
             </span>
-          </h1>
+        </NavLink>
         </div>
         <div className="col-2 col-lg-10 px-0 mx-0">
           <span className="menu-btn d-block d-lg-none text-right ml-auto mr-0">
@@ -19,20 +20,16 @@ const Navbar = () => {
               <i className="icon ico-bars"></i>
             </span>
           </span>
+
           <ul className="navbar-nav d-none d-lg-block text-right px-0 mx-0">
             <li className="nav-item">
-              <span className="nav-link active" aria-current="page"><span>01</span> Inicio</span>
-            </li>
-            
-            <li className="nav-item dropdown">
-              <span className="nav-link dropdown-toggle" id="navbarDropdownWorks" data-bs-toggle="dropdown" aria-expanded="false"><span>02</span> Categorías <i className="icon ico-chevron-down"></i>
-              </span>
-              <div id="drop-works-menu" className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownWorks">
-                <span><span className="dropdown-item">Sitios Web</span></span>
-              </div>
+                <NavLink className="nav-link" to="/category/home">Home</NavLink>
             </li>
             <li className="nav-item">
-              <span className="nav-link"><span>03</span> Contacto</span>
+              <NavLink className="nav-link" to="/category/zapatillas">Zapatillas</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/category/gorras">Gorras</NavLink>
             </li>
             <li className="nav-item">
               <button className="nav-link">

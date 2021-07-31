@@ -1,21 +1,19 @@
 import './App.sass';
 import Navbar from './components/Navbar/Navbar';
-import {ItemListContainer} from './components/ItemList/ItemListContainer';
+import { ItemListContainer } from './components/ItemList/ItemListContainer';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import ItemDetailContainer from './ItemDetailContainer/ItemDetailContainer';
 export const App = () => {
-  const saludos = 'Hola como estan?';
   return (
     <>
-    <div className="App">
-      <div className="header">
-        <Navbar />
-      </div>
-      <div className="wrapper">
-      <div className="container alert-info">
-        <ItemListContainer greetings={saludos}  />
-
-      </div>
-      </div>
-    </div>
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={ ItemListContainer } />
+        <Route path="/category/:id" component={ ItemListContainer } />
+        <Route path="/item/:id" component={ ItemDetailContainer } />
+      </Switch>
+    </Router>
     </>
   );
 }

@@ -6,7 +6,7 @@ export const ItemList = ({ items, loader }) => {
   return (
     <>
       {loader === 'Cargando' 
-      ? (<Loader />)
+      ? <Loader />
       : (
         <div className="container-fluid d-flex justify-content-center" >
           <div className="row col-md-8">
@@ -14,11 +14,7 @@ export const ItemList = ({ items, loader }) => {
               return (
                 <div className="col mb-4" key={ item.id }>
                   <Item 
-                    title={item.title} 
-                    description={item.description} 
-                    price={item.price} 
-                    pictureUrl={item.pictureUrl}
-                    stock={item.stock}
+                    { ...item }
                   />
                 </div>
               )
