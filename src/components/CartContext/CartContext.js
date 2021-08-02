@@ -22,6 +22,11 @@ export const CartProvider = ({ children }) => {
     setCart(removeFiltered);
   };
 
+  const checkStock = selectedItem => {
+    const checkItem = cart.find(e => e.id === selectedItem.id);
+    return checkItem ? selectedItem.stock - checkItem.quantity : selectedItem.stock
+  }
+
   const cartLength = () =>{
     return cart.reduce((acc, item) => acc + item.quantity, 0)
   };
@@ -37,7 +42,8 @@ export const CartProvider = ({ children }) => {
               removeFromCart,
               addToCart,
               isInCart,
-              removeItemFromCart
+              removeItemFromCart,
+              checkStock
             }}>
             {children}
           </CartContext.Provider>
