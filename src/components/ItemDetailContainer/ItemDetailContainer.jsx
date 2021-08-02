@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 
 const dataPromiseDetail = () => {
@@ -16,24 +17,27 @@ const dataPromiseDetail = () => {
 };
 
 const ItemDetailContainer = () => {
-  const [products, setProducts] = useState([]);
+  const { id } = useParams();
+  const [selectedProduct, setSelectedProduct] = useState([]);
   const [promiseStatus, setPromiseStatus] = useState('Cargando...')
 
   const getPromise = () => {
     dataPromiseDetail()
     .then((info) => {
+      const foundItem = info.find(item => item.id === +id)
       setPromiseStatus('Success')
-      setProducts(info)
+      setSelectedProduct(foundItem)
     });
   };
 
   useEffect(() => {
     getPromise();
+  // eslint-disable-next-line
   }, []);
 
   return (
     <div>
-       <ItemDetail loader={ promiseStatus } products={ products }/>
+       <ItemDetail loader={promiseStatus} selectedProduct={selectedProduct}/>
     </div>
   )
 }

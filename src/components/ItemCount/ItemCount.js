@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
+import './ItemCount.css'
 
-export const ItemCount = ({initial, stock}) => {
-const [count, setCount] = useState(initial);
+export const ItemCount = ({initial, counter, setCounter, stock}) => {
 
-  const handleDecrement = () => setCount(count - 1)
-  const handleIncrement = () => setCount(count + 1)
+  const handleDecrement = () => { counter > initial && setCounter(counter - 1) }
+  const handleIncrement = () => { counter < stock && setCounter(counter + 1) }
 
   return (
-    <div>
-      <button className="btn btn-info btn-circle" onClick={ handleDecrement } disabled={count <= initial}> - </button>
-      <strong>{ count }</strong>
-      <button className="btn btn-info btn-circle" onClick={ handleIncrement } disabled={count === stock}> + </button>
-    </div>
+    <>
+      <div>
+        <div className="buttonGroup">
+          <span><button className="btn btn-info btn-circle functionButton" onClick={ handleDecrement } disabled={ counter === initial }> - </button></span>
+          <span><h3 className="counter"> { counter } </h3></span>
+          <span><button className="btn btn-info btn-circle functionButton" onClick={ handleIncrement } disabled={ counter === stock }> + </button></span>
+        </div>
+      </div>
+    </>
   )
 }

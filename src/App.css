@@ -1,0 +1,11 @@
+.cart{
+  height: 2rem;
+  margin-right: 1rem;
+  width: 2rem;
+}
+
+.cartNumber {
+  color: red;
+  font-size: 1.5rem;
+  margin-right: 4.5rem;
+}
